@@ -4,11 +4,7 @@ import { Injectable, EventEmitter } from '@angular/core';
 @Injectable({ providedIn: 'root' })
 export class ShoppingListService {
     ingredientsChanged = new EventEmitter<Ingredient[]>();
-    ingredients: Ingredient[] = [
-        new Ingredient('Apples', 5),
-        new Ingredient('Tomatoes', 10),
-        new Ingredient('asdasd', 2),
-    ];
+    ingredients: Ingredient[] = [];
 
     getIngredients(): Ingredient[] {
         return this.ingredients.slice();
@@ -16,6 +12,11 @@ export class ShoppingListService {
 
     addIngredient(ingredient: Ingredient) {
         this.ingredients.push(ingredient);
+        this.ingredientsChanged.emit(this.getIngredients());
+    }
+
+    addIngredients(ingredient: Ingredient[]) {
+        this.ingredients.push(...ingredient);
         this.ingredientsChanged.emit(this.getIngredients());
     }
 }
