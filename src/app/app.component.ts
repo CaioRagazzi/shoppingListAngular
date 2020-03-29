@@ -7,9 +7,4 @@ import { ShoppingListService } from './shopping-list/service/shopping-list.servi
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  loadedFeature: string = 'recipe';
-
-  onNavigate(feature: string) {
-    this.loadedFeature = feature;
-  }
 }
